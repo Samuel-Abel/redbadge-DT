@@ -1,0 +1,29 @@
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 70px;
+}
+
+.toolbarlogo {
+  height: 60px;
+  margin-top: 5px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+button{
+  background-color: #da674a;
+  margin: 20px;
+  align-content: center;
+  height: 40px;
+  font-size: large;
+  border-radius: 5px;
+}
+
+button:hover{
+  background-color: #e07d6a;
+  transition: all 0.3s ease-in-out;
+}
