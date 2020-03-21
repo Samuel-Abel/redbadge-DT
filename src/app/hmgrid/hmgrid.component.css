@@ -1,6 +1,7 @@
 .firstimg{
 background-color: #2B4D59;
 border: #2B4D59;
+margin-right: 200px;
 }
 
 .secondimg{
@@ -12,7 +13,7 @@ border: #2B4D59;
  .thirdimg{
      background-color: #2B4D59;
    border: #2B4D59;
-   margin-left: auto;
+   margin-right: 0px;
 }
 
 img{
