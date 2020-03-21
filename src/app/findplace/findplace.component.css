@@ -3,3 +3,7 @@ findPlace {
     max-width: 500px;
     width: 100%;
 }
+
+agm-map {
+    height: 300px;
+}
