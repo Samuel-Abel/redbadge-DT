@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "daytrippin"
+    }
+  },
+  "defaultProject": "daytrippin",
+  "cli": {
+    "analytics": "4629725b-bbb1-4923-9cdf-841409d9cdf3"
+  }
 }
