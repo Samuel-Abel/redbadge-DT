@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepgComponent } from './homepg/homepg.component';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -23,23 +24,37 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input'
 import { AgmCoreModule } from '@agm/core';
 >>>>>>> origin/cwampler
+=======
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { FooterComponent } from './footer/footer.component';
+import { HmgridComponent } from './hmgrid/hmgrid.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+>>>>>>> origin/sam
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepgComponent,
 <<<<<<< HEAD
+<<<<<<< HEAD
     MainNavComponent
 =======
     LoginComponent,
     FindplaceComponent
 >>>>>>> origin/cwampler
+=======
+    FooterComponent,
+    HmgridComponent
+>>>>>>> origin/sam
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+<<<<<<< HEAD
 <<<<<<< HEAD
     LayoutModule,
     MatToolbarModule,
@@ -59,6 +74,11 @@ import { AgmCoreModule } from '@agm/core';
       libraries: ['places']
     })
 >>>>>>> origin/cwampler
+=======
+    MatGridListModule,
+    MatCardModule,
+    MatIconModule
+>>>>>>> origin/sam
   ],
 
   providers: [],

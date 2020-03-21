@@ -1,0 +1,21 @@
+.firstimg{
+background-color: #2B4D59;
+border: #2B4D59;
+margin-right: 200px;
+}
+
+.secondimg{
+    background-color: #2B4D59;
+    border: #2B4D59;
+    margin-right: auto;
+}
+
+ .thirdimg{
+     background-color: #2B4D59;
+   border: #2B4D59;
+   margin-right: 0px;
+}
+
+img{
+    max-width: 300px;
+}
