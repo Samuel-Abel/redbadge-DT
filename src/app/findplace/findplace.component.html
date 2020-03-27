@@ -1,50 +1,12 @@
-<!-- <div class="container">
-  <h1>Angular Google Maps with Places Search Eaxmple</h1>
-  <div class="form-group">
-      <label>EnterAddress</label>
-      <input type="text" class="form-control" 
-      (keydown.enter)="$event.presentDefault()"
-      placeholder="Search Nearest Location" 
-      autocorrect ="off"
-      autocapitalize="off"
-      spellcheck="off"
-      type="text"
-      #search>
-  </div>
-  </div>
-  
-  <agm-map
-  [latitude] = 'latitude'
-  [longitude] = 'longitude'
-  [zoom] = 'zoom'>
-      <agm-marker
-      [latitude] = 'latitude'
-      [longitude] = 'longitude'
-      [markerDraggable]="true"
-      (dragEnd)="markerDragEnd($event)">
-  </agm-marker>
-  </agm-map>
-  <h5>Address: {{address}}</h5>
-  <div>Latitude: {{latitude}}</div>
-  <div>Longitude: {{longitude}}</div> -->
-  
-<div class="container">
-  
-  <h1> Search for a Place to add to your Itinerary</h1>
-  <mat-form-field appearance="fill">
-    <mat-label>Enter Location</mat-label>
-    <input matInput placeholder="Location">
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>Select</mat-label>
-    <mat-select>
-      <mat-option value="option">Option</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>Textarea</mat-label>
-    <textarea matInput></textarea>
-  </mat-form-field>
+Search Place: <input type="text" [(ngModel)]="apiQuery">
+<!-- Search City: <input type="text" [(ngModel)]="apiQueryCity"> -->
+<button (click)="search()">Submit</button>
+
+
+<div *ngFor="let place of places"> 
+  Name: {{place.name}}
+  Address:  {{place.formatted_address}}
+  Rating:  {{place.rating}}
+  Price Level: {{place.price_level}}
+  Open Hours:  {{place.opening_hours}}
 </div>
