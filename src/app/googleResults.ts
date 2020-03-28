@@ -7,7 +7,6 @@ export interface googleResults {
     icon: string,
     id: string,
     name: string,
-    is_open: boolean,
     photos: any,
     types: any,
     rating: number

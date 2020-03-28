@@ -22,6 +22,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { FooterComponent } from './footer/footer.component';
 import { HmgridComponent } from './hmgrid/hmgrid.component';
 import {MatCardModule} from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table'
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {MatCardModule} from '@angular/material/card';
     MatInputModule,
     MatGridListModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule
   ],
 
   providers: [],

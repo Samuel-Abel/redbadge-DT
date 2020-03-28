@@ -6,6 +6,11 @@
 
 button {
     margin: 1rem;
+    background-color: #da674a;
+    align-content: center;
+    height: 40px;
+    font-size: large;
+    border-radius: 5px;
 }
 
 mat-form-field {

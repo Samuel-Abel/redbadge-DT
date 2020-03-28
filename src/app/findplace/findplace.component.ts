@@ -11,6 +11,7 @@ import { googleResults } from '../googleResults';
 export class FindplaceComponent {
   apiQuery: string = "";
   places: any = []
+  columnsToDisplay = ['name', 'address', 'rating', 'price_level'];
 
 constructor(public placeService: ApiService){
 }
@@ -21,7 +22,7 @@ ngOnInit() {}
 search(){
 this.placeService.getPlaces(this.apiQuery)
 .subscribe((places:googleResults) => {
-  this.places = places.results;
+  this.places = places;
   console.log(this.places) 
 
 })
