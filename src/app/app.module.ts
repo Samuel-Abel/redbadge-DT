@@ -23,7 +23,6 @@ import { FooterComponent } from './footer/footer.component';
 import { HmgridComponent } from './hmgrid/hmgrid.component';
 import {MatCardModule} from '@angular/material/card';
 
-
 @NgModule({
   declarations: [
     AppComponent,

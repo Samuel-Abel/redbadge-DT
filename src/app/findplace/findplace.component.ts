@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import { ApiService } from '../api.service';
-import { googleResponse } from '../googleResults'
+import { googleResults } from '../googleResults';
 
 @Component({
   selector: 'app-findplace',
@@ -20,7 +20,7 @@ ngOnInit() {}
 
 search(){
 this.placeService.getPlaces(this.apiQuery)
-.subscribe((places:googleResponse) => {
+.subscribe((places:googleResults) => {
   this.places = places.results;
   console.log(this.places) 
 

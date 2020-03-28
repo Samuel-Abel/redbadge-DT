@@ -1,12 +1,15 @@
-Search Place: <input type="text" [(ngModel)]="apiQuery">
+<mat-form-field floatLabel="auto" appearance="outline">
+<mat-label>Search</mat-label>
+<input matInput placeholder="Search" [(ngModel)]="apiQuery">
+
 <!-- Search City: <input type="text" [(ngModel)]="apiQueryCity"> -->
-<button (click)="search()">Submit</button>
+</mat-form-field>
+<button mat-raised-button (click)="search()">Submit</button>
 
-
-<div *ngFor="let place of places"> 
+<mat-list-item *ngFor="let place of places"> 
   Name: {{place.name}}
   Address:  {{place.formatted_address}}
   Rating:  {{place.rating}}
   Price Level: {{place.price_level}}
   Open Hours:  {{place.opening_hours}}
-</div>
+</mat-list-item>

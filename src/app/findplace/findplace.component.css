@@ -1,9 +1,13 @@
-findPlace {
+/* findPlace {
     min-width: 150px;
     max-width: 500px;
     width: 100%;
+} */
+
+button {
+    margin: 1rem;
 }
 
-agm-map {
-    height: 300px;
+mat-form-field {
+    margin: 1rem;
 }
