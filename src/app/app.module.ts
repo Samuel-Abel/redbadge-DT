@@ -22,7 +22,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { FooterComponent } from './footer/footer.component';
 import { HmgridComponent } from './hmgrid/hmgrid.component';
 import {MatCardModule} from '@angular/material/card';
-import { MatTableModule } from '@angular/material/table'
+import { MatTableModule } from '@angular/material/table';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { MatTableModule } from '@angular/material/table'
     MatGridListModule,
     MatCardModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    DragDropModule,
+    FlexLayoutModule
   ],
 
   providers: [],

@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import { ApiService } from '../api.service';
 import { googleResults } from '../googleResults';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-findplace',
@@ -10,8 +11,10 @@ import { googleResults } from '../googleResults';
 
 export class FindplaceComponent {
   apiQuery: string = "";
-  places: any = []
-  columnsToDisplay = ['name', 'address', 'rating', 'price_level'];
+  places: any = [];
+  itinerary: any = [];
+  selected: any =[]
+ columnsToDisplay = ['name', 'address', 'rating', 'price_level'];
 
 constructor(public placeService: ApiService){
 }
@@ -26,5 +29,17 @@ this.placeService.getPlaces(this.apiQuery)
   console.log(this.places) 
 
 })
+}
+onDrop(event: CdkDragDrop<string[]>){
+    if(event.previousContainer == event.container) {
+      moveItemInArray(event.container.data,
+      event.previousIndex,
+      event.currentIndex); 
+  } else {
+    transferArrayItem(event.previousContainer.data,
+      event.container.data,
+      event.previousIndex, event.currentIndex);
+  }
+
 }
 }

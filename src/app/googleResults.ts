@@ -9,6 +9,7 @@ export interface googleResults {
     name: string,
     photos: any,
     types: any,
-    rating: number
+    rating: number,
+    price_level: number
 }
     
