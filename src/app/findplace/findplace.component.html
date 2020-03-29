@@ -25,7 +25,7 @@
     </div>
 
     <div class="done-container column-container">
-      <div class="list"
+      <mat-list class="list"
           cdkDropList
           #itinerary="cdkDropList"
           [cdkDropListData]="selected"
@@ -38,8 +38,8 @@
             <mat-card-subtitle>{{select.formatted_address}}</mat-card-subtitle>
           </mat-card-header>
         </mat-card>
-      </div>
+      </mat-list>
+      <button mat-raised-button (click)="saveItinerary()">Save Itinerary</button>
     </div>
-
   </div>
 </div>

@@ -14,7 +14,6 @@ export class FindplaceComponent {
   places: any = [];
   itinerary: any = [];
   selected: any =[]
- columnsToDisplay = ['name', 'address', 'rating', 'price_level'];
 
 constructor(public placeService: ApiService){
 }
@@ -30,6 +29,7 @@ this.placeService.getPlaces(this.apiQuery)
 
 })
 }
+
 onDrop(event: CdkDragDrop<string[]>){
     if(event.previousContainer == event.container) {
       moveItemInArray(event.container.data,
@@ -41,5 +41,9 @@ onDrop(event: CdkDragDrop<string[]>){
       event.previousIndex, event.currentIndex);
   }
 
+}
+
+saveItinerary(){
+  
 }
 }
