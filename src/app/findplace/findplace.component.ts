@@ -12,7 +12,6 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 export class FindplaceComponent {
   apiQuery: string = "";
   places: any = [];
-  itinerary: any = [];
   selected: any =[]
 
 constructor(public placeService: ApiService){
@@ -45,5 +44,10 @@ onDrop(event: CdkDragDrop<string[]>){
 
 saveItinerary(){
   
+  console.log(this.selected)
+}
+
+loadItinerary(){
+  console.log()
 }
 }
