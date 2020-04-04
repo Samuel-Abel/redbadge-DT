@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "daytrippin"
+  "defaultProject": "daytrippin",
+  "cli": {
+    "analytics": false
+  }
 }
