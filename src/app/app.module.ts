@@ -18,13 +18,17 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { AgmCoreModule } from '@agm/core';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { FooterComponent } from './footer/footer.component';
-import { HmgridComponent } from './hmgrid/hmgrid.component';
-import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { ItinerariesComponent } from './itineraries/itineraries.component';
 import { UserItinerariesComponent } from './useritineraries/useritineraries.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { FooterComponent } from './footer/footer.component';
+import { HmgridComponent } from './hmgrid/hmgrid.component';
+import {MatCardModule} from '@angular/material/card';
+import { SignupComponent } from './signup/signup.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { SignupDialogComponent } from './signup-dialog/signup-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -33,15 +37,16 @@ import { UserItinerariesComponent } from './useritineraries/useritineraries.comp
     MainNavComponent,
     LoginComponent,
     FindplaceComponent,
-    ItinerariesComponent,
     FooterComponent,
     HmgridComponent,
     ItinerariesComponent,
-    UserItinerariesComponent
-    ],
+    UserItinerariesComponent,
+    FooterComponent,
+    SignupComponent,
+    SignupDialogComponent
+  ],
 
   imports: [
-    BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
@@ -62,7 +67,8 @@ import { UserItinerariesComponent } from './useritineraries/useritineraries.comp
     }),
     MatGridListModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
 
   providers: [],

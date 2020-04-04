@@ -1,1 +1,20 @@
-<p>login works!</p>
+    <br>
+    <br>
+    <mat-card class='login-container'>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+    <mat-form-field appearance='fill'>
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]='username'/> 
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance='fill'>
+        <mat-label>Password</mat-label>
+        <input matInput [(ngModel)]='password'/>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button type='submit' class='btn-primary' (click)='LoginUser()'> Log In </button>
+    <app-signup-dialog></app-signup-dialog>
+</mat-card-content>
+<br>
+</mat-card>
