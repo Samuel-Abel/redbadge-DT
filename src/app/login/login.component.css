@@ -1,0 +1,9 @@
+.login-container{
+    background-color:#39998e;
+    border-color: aliceblue;
+    min-width: 300px;
+}
+
+.btn-primary{
+    background-color: orangered;
+}

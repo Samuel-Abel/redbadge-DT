@@ -14,4 +14,16 @@ export class ApiService {
     
     return this.httpClient.get(apiUrl)
   }
+
+  LoginUser(email, password){
+    const body={
+      email: email,
+      password: password
+    }
+    const reqHeaders= new HttpHeaders({
+      "Content-Type": 'application/json'
+    })
+    return this.httpClient.post<any>('http://localhost:4200/api/user/signin', body, {headers:reqHeaders})
+  }
+
 }

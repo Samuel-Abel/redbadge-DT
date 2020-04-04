@@ -12,17 +12,21 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { LoginComponent } from './login/login.component';
-// import { FindplaceComponent } from './findplace/findplace.component';
+import { FindplaceComponent } from './findplace/findplace.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input'
-// import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule } from '@agm/core';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { FooterComponent } from './footer/footer.component';
 import { HmgridComponent } from './hmgrid/hmgrid.component';
 import {MatCardModule} from '@angular/material/card';
+import { SignupComponent } from './signup/signup.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { SignupDialogComponent } from './signup-dialog/signup-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -30,9 +34,11 @@ import {MatCardModule} from '@angular/material/card';
     HomepgComponent,
     MainNavComponent,
     LoginComponent,
-    // FindplaceComponent,
+    FindplaceComponent,
     FooterComponent,
-    HmgridComponent
+    HmgridComponent,
+    SignupComponent,
+    SignupDialogComponent
   ],
 
   imports: [
@@ -51,13 +57,14 @@ import {MatCardModule} from '@angular/material/card';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    // AgmCoreModule.forRoot({
-    //   apiKey: 'AIzaSyAVOiIQKnLWfWrYJVdjYyKHmnTEcg4K1_Q',
-    //   libraries: ['places']
-    // }),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAVOiIQKnLWfWrYJVdjYyKHmnTEcg4K1_Q',
+      libraries: ['places']
+    }),
     MatGridListModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
 
   providers: [],
