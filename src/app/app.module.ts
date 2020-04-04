@@ -34,8 +34,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     LoginComponent,
     FindplaceComponent,
     FooterComponent,
-    HmgridComponent
-  ],
+    HmgridComponent,
+    ],
 
   imports: [
     BrowserModule,
@@ -58,7 +58,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatIconModule,
     MatTableModule,
     DragDropModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ],
 
   providers: [],

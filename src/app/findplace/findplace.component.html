@@ -37,10 +37,19 @@
             <mat-card-title>{{select.name}}</mat-card-title>
             <mat-card-subtitle>{{select.formatted_address}}</mat-card-subtitle>
           </mat-card-header>
+          <mat-card-content>
+            Rating: {{select.rating}}  
+            Price Leve: {{select.price_level}}
+          </mat-card-content>
         </mat-card>
       </mat-list>
-      <button mat-raised-button (click)="saveItinerary()">Save Itinerary</button>
-      <button mat-raised-button (click)="loadItinerary()">Load Itinerary</button>
+      <mat-form-field floatLabel="auto" appearance="outline">
+        <mat-label>Itinerary Name</mat-label>
+        <input [(ngModel)]="itineraryName" matInput placeholder="Itinerary Name">
+      </mat-form-field>
+      <button mat-raised-button (click)="saveItinerary()">Save</button>
+      <button mat-raised-button (click)="loadItinerary()">Load</button>
+      <button mat-raised-button (click)="deleteItinerary()">Delete</button>
     </div>
   </div>
 </div>
