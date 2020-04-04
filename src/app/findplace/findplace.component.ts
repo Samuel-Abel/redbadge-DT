@@ -1,6 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef, NgZone} from '@angular/core';
-import {MapsAPILoader, MouseEvent } from '@agm/core'
-import { google } from 'google-maps';
+import { Component} from '@angular/core';
+import { ApiService } from '../../api.service';
+import { googleResults } from '../models/googleResults';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { Observable } from 'rxjs';
+import { eventResults } from '../models/eventResults';
 
 @Component({
   selector: 'app-findplace',
@@ -8,104 +11,53 @@ import { google } from 'google-maps';
   styleUrls: ['./findplace.component.css']
 })
 
-export class FindplaceComponent implements OnInit {
-  title: string = 'daytrippin';
-  latitude: number;
-  longitude: number;
-  zoom: number;
-  address: string;
-  private geoCoder;
+export class FindplaceComponent {
+  apiQuery: string = ""; 
+  places: any = [];
+  selected: any = [];
+  itineraryName: string 
 
-  google: google
+constructor(public placeService: ApiService){
+}
 
-  @ViewChild('search')
-  public searchElementRef: ElementRef;
+ngOnInit() {}
 
-  constructor(
-    private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
-  ) {}
-  
-  ngOnInit(){
-    
-    //load Places Autocomplete
-    this.mapsAPILoader.load().then(() => {
-      this.setCurrentLocation();
-      this.geoCoder = new google.maps.Geocoder;
+search(){
+this.placeService.getPlaces(this.apiQuery)
+.subscribe((places:googleResults) => {
+  this.places = places;
+  console.log(this.places) 
+})
+}
 
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ["address"]
-      });
-      autocomplete.addListener("place_changed", () => {
-        this.ngZone.run(() => {
-
-        //get the place result
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-        //verify result
-          if (place.geometry === undefined || place.geometry === null) {
-          return;
-        }
-
-         //set latitude, longitude and zoom
-        this.latitude = place.geometry.location.lat();
-        this.longitude = place.geometry.location.lng();
-        this.zoom = 12;
-        });
-      });
-    });
-    
+onDrop(event: CdkDragDrop<string[]>){
+    if(event.previousContainer == event.container) {
+      moveItemInArray(event.container.data,
+      event.previousIndex,
+      event.currentIndex); 
+  } else {
+    transferArrayItem(event.previousContainer.data,
+      event.container.data,
+      event.previousIndex, event.currentIndex);
   }
-//Get Current Location Coordinates
-  private setCurrentLocation() {
-    if ('geolocation' in navigator){
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 8;
-        this.getAddress(this.latitude, this.longitude);
-      });
-    }
-  }
+  console.log(this.selected)
 
-markerDragEnd($event: MouseEvent) {
-  console.log($event);
-  this.latitude = $event.coords.lat;
-  this.longitude = $event.coords.lng;
-  this.getAddress(this.latitude, this.longitude);
 }
 
-getAddress(latitude, longitude){
-  this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude}}, (results, status) => {
-    console.log(results);
-    console.log(status);
-    if (status === 'OK') {
-      if (results[0]) {
-        this.zoom = 12;
-        this.address = results[0].formatted_address;
-      }else {
-        window.alert('No results found');
-      }
-    } else {
-      window.alert('Geocoder failed due to: ' + status);
-    }
-  });
-}
+saveItinerary(){
+  const eventDetails = JSON.stringify(this.selected)
+  this.placeService.postPlaces(eventDetails, this.itineraryName)
+  .subscribe((selected) => {
+    
+    console.log(selected)
+  })
 }
 
+loadItinerary(){
+  console.log()
+}
 
-// export class FindplaceComponent implements OnInit {
-  
-//   findplace: any;
-
-//   constructor(private PlaceService: ApiService) { }
-
-//   ngOnInit() {}
-  
-
-// getPlaces():void{
-//     this.PlaceService.getPlaces()
-//     .subscribe(
-//       findplace => this.findplace = findplace)
-//   }
-// }
+deleteItinerary(){
+  console.log()
+}
+}

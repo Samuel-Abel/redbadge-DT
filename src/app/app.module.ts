@@ -28,7 +28,9 @@ import {MatCardModule} from '@angular/material/card';
 import { SignupComponent } from './signup/signup.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { SignupDialogComponent } from './signup-dialog/signup-dialog.component';
-
+import { MatTableModule } from '@angular/material/table';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,7 @@ import { SignupDialogComponent } from './signup-dialog/signup-dialog.component';
     FooterComponent,
     SignupComponent,
     SignupDialogComponent
-  ],
+    ],
 
   imports: [
     AppRoutingModule,
@@ -61,14 +63,13 @@ import { SignupDialogComponent } from './signup-dialog/signup-dialog.component';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAVOiIQKnLWfWrYJVdjYyKHmnTEcg4K1_Q',
-      libraries: ['places']
-    }),
     MatGridListModule,
     MatCardModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule,
+    DragDropModule,
+    FlexLayoutModule,
   ],
 
   providers: [],

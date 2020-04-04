@@ -1,50 +1,55 @@
-<!-- <div class="container">
-  <h1>Angular Google Maps with Places Search Eaxmple</h1>
-  <div class="form-group">
-      <label>EnterAddress</label>
-      <input type="text" class="form-control" 
-      (keydown.enter)="$event.presentDefault()"
-      placeholder="Search Nearest Location" 
-      autocorrect ="off"
-      autocapitalize="off"
-      spellcheck="off"
-      type="text"
-      #search>
-  </div>
-  </div>
-  
-  <agm-map
-  [latitude] = 'latitude'
-  [longitude] = 'longitude'
-  [zoom] = 'zoom'>
-      <agm-marker
-      [latitude] = 'latitude'
-      [longitude] = 'longitude'
-      [markerDraggable]="true"
-      (dragEnd)="markerDragEnd($event)">
-  </agm-marker>
-  </agm-map>
-  <h5>Address: {{address}}</h5>
-  <div>Latitude: {{latitude}}</div>
-  <div>Longitude: {{longitude}}</div> -->
-  
+<mat-form-field floatLabel="auto" appearance="outline">
+<mat-label>Search</mat-label>
+<input matInput placeholder="Search" [(ngModel)]="apiQuery">
+</mat-form-field>
+<button mat-raised-button (click)="search()">Submit</button>
+
 <div class="container">
-  
-  <h1> Search for a Place to add to your Itinerary</h1>
-  <mat-form-field appearance="fill">
-    <mat-label>Enter Location</mat-label>
-    <input matInput placeholder="Location">
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>Select</mat-label>
-    <mat-select>
-      <mat-option value="option">Option</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>Textarea</mat-label>
-    <textarea matInput></textarea>
-  </mat-form-field>
-</div> 
+  <div class="list-container">
+    <div class="places-container column-container">
+      <div class="list"
+          cdkDropList
+          #placeSearch="cdkDropList"
+          [cdkDropListData]="places.results"
+          [cdkDropListConnectedTo]="[itinerary]"
+          (cdkDropListDropped)="onDrop($event)">
+
+        <h2>Search Results</h2>
+        <mat-card *ngFor="let place of places.results" cdkDrag>
+          <mat-card-header>
+            <mat-card-title>{{place.name}}</mat-card-title>
+            <mat-card-subtitle>{{place.formatted_address}}</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="done-container column-container">
+      <mat-list class="list"
+          cdkDropList
+          #itinerary="cdkDropList"
+          [cdkDropListData]="selected"
+          [cdkDropListConnectedTo]="placeSearch"
+          (cdkDropListDropped)="onDrop($event)">
+        <h2>My Itinerary</h2>
+        <mat-card *ngFor="let select of selected" cdkDrag>
+          <mat-card-header> 
+            <mat-card-title>{{select.name}}</mat-card-title>
+            <mat-card-subtitle>{{select.formatted_address}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            Rating: {{select.rating}}  
+            Price Leve: {{select.price_level}}
+          </mat-card-content>
+        </mat-card>
+      </mat-list>
+      <mat-form-field floatLabel="auto" appearance="outline">
+        <mat-label>Itinerary Name</mat-label>
+        <input [(ngModel)]="itineraryName" matInput placeholder="Itinerary Name">
+      </mat-form-field>
+      <button mat-raised-button (click)="saveItinerary()">Save</button>
+      <button mat-raised-button (click)="loadItinerary()">Load</button>
+      <button mat-raised-button (click)="deleteItinerary()">Delete</button>
+    </div>
+  </div>
+</div>
