@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
+import { ApiService } from '../../api.service';
 import {HttpClient} from '@angular/common/http'
 
 @Component({
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   router: any;
 
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {}
 
   ngOnInit() {
     this.LoginUser()
@@ -28,18 +28,20 @@ export class LoginComponent implements OnInit {
     }
   }
 LoginUser(){
- let formData = {
-   user: {
-     username: this.username,
-     password: this.password
-   }
- };
- this.http.post('http://localhost:3000/api/user/signin', formData).subscribe(
-   res => {
-     console.log(res);
-    //  localStorage.setItem('token', res.sessionToken)
-   },
-   err => console.log(err)
- );
+let formData = {
+  user: {
+    username: this.username,
+    password: this.password
+  }
+};
+this.http.post<any>('http://localhost:3000/api/user/signin', formData)
+.subscribe(
+  res => {
+    console.log(res);
+    localStorage.setItem('token', res.sessionToken)
+    this.router.link(["findplace"])
+  },
+  err => console.log(err)
+  );
 }
 }

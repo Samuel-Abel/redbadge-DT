@@ -1,6 +1,6 @@
 <mat-form-field floatLabel="auto" appearance="outline">
 <mat-label>Search</mat-label>
-<input matInput placeholder="Search" [(ngModel)]="apiQuery">
+<input matInput placeholder="Search" [(ngModel)]="apiQuery" required=T>
 </mat-form-field>
 <button mat-raised-button (click)="search()">Submit</button>
 
@@ -39,17 +39,30 @@
           </mat-card-header>
           <mat-card-content>
             Rating: {{select.rating}}  
-            Price Leve: {{select.price_level}}
+            Price Level: {{select.price_level}}
           </mat-card-content>
         </mat-card>
       </mat-list>
+    </div>
       <mat-form-field floatLabel="auto" appearance="outline">
         <mat-label>Itinerary Name</mat-label>
-        <input [(ngModel)]="itineraryName" matInput placeholder="Itinerary Name">
-      </mat-form-field>
-      <button mat-raised-button (click)="saveItinerary()">Save</button>
+        <input 
+          [(ngModel)]="itineraryName" 
+          matInput placeholder="Itinerary Name"
+          required=T>
+        </mat-form-field>
+        <button type="submit" mat-raised-button (click)="saveItinerary()" >Save</button>
+
+
       <button mat-raised-button (click)="loadItinerary()">Load</button>
       <button mat-raised-button (click)="deleteItinerary()">Delete</button>
-    </div>
+      <button mat-raised-button (click)="updateItinerary()">Update</button>
+
+      <mat-form-field>
+      <mat-label>Select an Itinerary</mat-label>
+      <mat-select [(ngModel)]="itinerarySelected">
+        <mat-option *ngFor="let x of itineraries" value="{{x.id}}">{{x.itineraryName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 </div>
