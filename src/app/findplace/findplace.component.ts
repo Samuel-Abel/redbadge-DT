@@ -3,6 +3,7 @@ import { ApiService } from '../../api.service';
 import { googleResults } from '../models/googleResults';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { FormGroup } from '@angular/forms';
+import {PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-findplace',
@@ -16,15 +17,24 @@ export class FindplaceComponent {
   selected: any = [];
   itineraryName: string;
   recordId: number;
-  searchForPlaces: FormGroup;
-  submitItinerary: FormGroup;
+  submitItinerary: any;
   itineraries: any = [];
   itinerarySelected: any;
+  eventDetails: any;
+  placeType: any;
+  showUpdateButton: boolean = false;
+  showDeleteButton: boolean = false;
+  isDisabled: boolean = true;
+  location: string;
 
 constructor (private placeService: ApiService){
 }
 
 ngOnInit() {
+  this.onLoad()
+}
+
+onLoad(){
   this.placeService.allItineraries()
   .subscribe(response => {
     console.log(response)
@@ -33,10 +43,14 @@ ngOnInit() {
 }
 
 search(){
-this.placeService.getPlaces(this.apiQuery)
+const apiQuery = (this.placeType+" ,"+this.location)
+this.placeService.getPlaces(apiQuery)
 .subscribe((places:googleResults) => {
+  this.isDisabled = false;
   this.places = places;
   console.log(this.places);
+ this.placeType = ""
+ this.location = ""
 })
 }
 
@@ -60,34 +74,73 @@ saveItinerary(){
     console.log(selected);
     this.recordId = this.selected.id;
     this.submitItinerary;
+    this.places = [];
+    this.onLoad();
+    this.isDisabled = true
   })
 }
 
 loadItinerary(){
+  this.places.results = []
   const id = this.itinerarySelected
   this.placeService.loadPlaces(id)
   .subscribe(response=>{ 
     console.log(response)   
-    this.places = {results: JSON.parse(response.eventDetails)}
+    this.selected =  JSON.parse(response.eventDetails)
+    this.itineraryName = this.itineraryName
+    this.showUpdateButton = true
+    this.showDeleteButton = true
+    this.isDisabled = true
   })
 }
 
 updateItinerary(){
   const id = this.itinerarySelected
-  this.placeService.updatePlaces(id)
-  .subscribe(response=>{ 
-    console.log(response)   
-    this.places = {results: JSON.stringify(response.eventDetails)}
+  const eventDetails = JSON.stringify(this.selected)
+  this.placeService.updatePlaces(id, eventDetails, this.itineraryName)
+  .subscribe(selected=>{ 
+    console.log(selected)  
+    this.submitItinerary
+    this.onLoad()
+    this.showUpdateButton = false
+    this.showDeleteButton = false
+    this.isDisabled = true
   })
 }
 
 deleteItinerary(){
   const id = this.itinerarySelected
   this.placeService.removeItinerary(id)
-  .subscribe(response => {
-    this.places = {results: JSON.parse(response.eventDetails)}
-    console.log(response)
+  .subscribe(response=>{
+    console.log("itinerary deleted")
+    this.onLoad()
+    this.selected = []
+    this.showUpdateButton = false
+    this.showDeleteButton = false
+    this.isDisabled = true
   })
-console.log()
 }
+clearItinerary(){
+  this.selected = []
+  this.onLoad()
+  this.itineraryName = null
+  this.itinerarySelected = null
+  this.places = []
+  this.showUpdateButton = false
+  this.showDeleteButton = false
+  this.isDisabled = true
+}
+
+// MatPaginator Inputs
+length = 60;
+pageSize = 10;
+pageSizeOptions: number[] = [5, 10, 25, 100];
+
+// MatPaginator Output
+pageEvent: PageEvent;
+
+setPageSizeOptions(setPageSizeOptionsInput: string) {
+  if (setPageSizeOptionsInput) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  }}
 }

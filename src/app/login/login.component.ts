@@ -37,9 +37,8 @@ let formData = {
 this.http.post<any>('http://localhost:3000/api/user/signin', formData)
 .subscribe(
   res => {
-    console.log(res);
+    console.log("Login is succesful");
     localStorage.setItem('token', res.sessionToken)
-    this.router.link(["findplace"])
   },
   err => console.log(err)
   );

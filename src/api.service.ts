@@ -10,7 +10,7 @@ export class ApiService {
   constructor(private http:HttpClient) { }
   
   getPlaces(apiQuery: any){
-    const apiUrl: string = `http://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${apiQuery}&key=${environment.API_KEY}` 
+    const apiUrl: string = `http://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${apiQuery}&key=${environment.API_KEY}&pagetoken&pageToken=pageToken` 
     return this.http.get(apiUrl)
   }
   
@@ -31,17 +31,38 @@ export class ApiService {
     })
   }
 
-  updatePlaces(id: number):any{
+  updatePlaces(id: number, selected: any, itineraryName: string):any{
     const token=localStorage.getItem("token")
     const httpHeaders = new HttpHeaders({
       "Content-Type": "application/json",
       Authorization: token
     })
-    return this.http.put(`http://localhost:3000/events/update/${id}`, 
+    let body = {
+      event:{
+        id: id,
+        eventDetails: selected,
+        itineraryName: itineraryName
+      }
+      }
+    
+    return this.http.put(`http://localhost:3000/events/update/${id}`, body,
     {
       headers: httpHeaders
     }) 
   }
+
+  placeTypes():any{
+    const token=localStorage.getItem("token")
+    const httpHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: token
+    })
+    return this.http.get(`http://localhost:3000/placeTypes/getAll`, 
+    {
+      headers: httpHeaders
+    })   
+  }
+
 
   loadPlaces(id: number):any{
     const token=localStorage.getItem("token")
@@ -61,7 +82,7 @@ export class ApiService {
       "Content-Type": "application/json",
       Authorization: token
       })
-      return this.http.get("http://localhost:3000/events/getall", 
+      return this.http.get("http://localhost:3000/events/getAll", 
       {
         headers: httpHeaders
       })   
