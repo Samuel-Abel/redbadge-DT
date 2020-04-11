@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { APIURL } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-signup',
@@ -31,7 +32,7 @@ role: string;
         role:this.role
       }
     };
-    this.http.post('http://localhost:3000/api/user/create', formData).subscribe(
+    this.http.post(`${APIURL}/api/user/create`, formData).subscribe(
     res => {  
     console.log(res);
     },

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
-import { environment } from './environments/environment.prod';
+import { environment, APIURL } from './environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class ApiService {
         eventDetails: selected,
         itineraryName: itineraryName
       }}
-    return this.http.post("http://localhost:3000/events/create", body,
+    return this.http.post(`${APIURL}/events/create`, body,
     {
       headers: httpHeaders
     })
@@ -45,7 +45,7 @@ export class ApiService {
       }
       }
     
-    return this.http.put(`http://localhost:3000/events/update/${id}`, body,
+    return this.http.put(`${APIURL}/events/update/${id}`, body,
     {
       headers: httpHeaders
     }) 
@@ -57,7 +57,7 @@ export class ApiService {
       "Content-Type": "application/json",
       Authorization: token
     })
-    return this.http.get(`http://localhost:3000/placeTypes/getAll`, 
+    return this.http.get(`${APIURL}/placeTypes/getAll`, 
     {
       headers: httpHeaders
     })   
@@ -70,7 +70,7 @@ export class ApiService {
       "Content-Type": "application/json",
       Authorization: token
     })
-    return this.http.get(`http://localhost:3000/events/findOne/${id}`, 
+    return this.http.get(`${APIURL}/events/findOne/${id}`, 
     {
       headers: httpHeaders
     })   
@@ -82,7 +82,7 @@ export class ApiService {
       "Content-Type": "application/json",
       Authorization: token
       })
-      return this.http.get("http://localhost:3000/events/getAll", 
+      return this.http.get(`${APIURL}/events/getAll`, 
       {
         headers: httpHeaders
       })   
@@ -94,7 +94,7 @@ export class ApiService {
     "Content-Type": "application/json",
     Authorization: token
     })
-    return this.http.delete(`http://localhost:3000/events/delete/${id}`,
+    return this.http.delete(`${APIURL}/events/delete/${id}`,
   {
     headers: httpHeaders
     })    

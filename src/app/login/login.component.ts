@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import {HttpClient} from '@angular/common/http'
 import { RouterLink, Router } from '@angular/router';
+import { APIURL } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,7 @@ LoginUser(){
      password: this.password
    }
  };
- this.http.post<any>('http://localhost:3000/api/user/signin', formData).subscribe(
+ this.http.post<any>(`${APIURL}/api/user/signin`, formData).subscribe(
    res => {
      console.log(res);
      localStorage.setItem('token', res.sessionToken)
