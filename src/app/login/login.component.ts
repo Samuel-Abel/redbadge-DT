@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
+import { ApiService } from '../../api.service';
 import {HttpClient} from '@angular/common/http'
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,18 +15,15 @@ export class LoginComponent implements OnInit {
 
 
   showLogout: boolean =false
-  showLogin: boolean =true
-  router: any;
 
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private router:Router) { }
 
   ngOnInit() {
     this.LoginUser()
     if(localStorage.getItem('token')){
       this.showLogout = true
-      this.showLogin = false
-    }
+    } 
   }
 LoginUser(){
  let formData = {
@@ -34,12 +32,13 @@ LoginUser(){
      password: this.password
    }
  };
- this.http.post('http://localhost:3000/api/user/signin', formData).subscribe(
+ this.http.post<any>('http://localhost:3000/api/user/signin', formData).subscribe(
    res => {
      console.log(res);
-    //  localStorage.setItem('token', res.sessionToken)
+     localStorage.setItem('token', res.sessionToken)
+     this.router.navigateByUrl("/findplace")
    },
    err => console.log(err)
  );
-}
+  }
 }

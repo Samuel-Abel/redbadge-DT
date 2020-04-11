@@ -56,7 +56,21 @@ mat-hint{
     padding-top: 12px;
 }
 
-.column-container {
+
+    .list-container {
+    flex-direction: row;
+    justify-content: space-around;
+    justify-content: auto;
+    align-items: auto;
+    }
+
+    .list-container1 {
+        flex-direction: row;
+        justify-content: space-around;
+        margin-left: 500px;
+        }
+
+    .column-container {
     width: 400px;
     max-width: 100%;
     margin: 0 25px 25px 0;
@@ -68,6 +82,20 @@ mat-hint{
 mat-card {
     background-color: #da674a;
     color: #edeff2;
+    }
+
+    .column-container1 {
+        width: 350px;
+        max-width: 100%;
+        height: 500px;
+        max-height: 100%;
+        margin: 0px 25px;
+        display: inline-block;
+        vertical-align: top;
+        justify-content: center;
+    }
+
+    .mat-card {
     margin: 1em;
     cursor: pointer;
     box-shadow: none !important;
@@ -124,3 +152,21 @@ a {
     text-decoration: none;
     color: dodgerblue;
 }
+    
+    
+    button{
+        background-color: #da674a;
+        margin: 5px;
+        align-content: center;
+        height: 45px;
+        width: 125px;
+        font-size: large;
+        border-radius: 5px;
+        color: white;
+    }
+
+    .input {
+        min-width: 150px;
+        max-width: 275px;
+        width: 100%;
+    }
