@@ -1,55 +1,72 @@
-<mat-form-field floatLabel="auto" appearance="outline">
-<mat-label>Search</mat-label>
-<input matInput placeholder="Search" [(ngModel)]="apiQuery">
-</mat-form-field>
-<button mat-raised-button (click)="search()">Submit</button>
-
-<div class="container">
-  <div class="list-container">
-    <div class="places-container column-container">
-      <div class="list"
-          cdkDropList
-          #placeSearch="cdkDropList"
-          [cdkDropListData]="places.results"
-          [cdkDropListConnectedTo]="[itinerary]"
-          (cdkDropListDropped)="onDrop($event)">
-
-        <h2>Search Results</h2>
-        <mat-card *ngFor="let place of places.results" cdkDrag>
-          <mat-card-header>
-            <mat-card-title>{{place.name}}</mat-card-title>
-            <mat-card-subtitle>{{place.formatted_address}}</mat-card-subtitle>
-          </mat-card-header>
-        </mat-card>
+<div class="findplccontainer">
+  <mat-grid-list cols="2" rowHeight="150px">
+    <mat-grid-tile>
+      <div class="searchfield">
+          <mat-form-field floatLabel="auto" appearance="outline">
+          <mat-label>Search</mat-label>
+          <input matInput placeholder="Search" [(ngModel)]="apiQuery">
+          <mat-hint>Place of Interest; City & State or Zip</mat-hint>
+          </mat-form-field>
+          <div class="searchbtn">
+            <button mat-raised-button (click)="search()">Search</button>
+          </div>
       </div>
+    </mat-grid-tile>
+    
+    <mat-grid-tile>
+      <div id="done-container" rowspan="10">
+        <mat-list class="list-places"
+            cdkDropList
+            #itinerary="cdkDropList"
+            [cdkDropListData]="selected"
+            [cdkDropListConnectedTo]="placeSearch"
+            (cdkDropListDropped)="onDrop($event)">
+          <h2>My Itinerary</h2>
+          <div class="matcardcontainer">
+            <mat-card *ngFor="let select of selected" cdkDrag>
+              <mat-card-header> 
+                <mat-card-title>{{select.name}}</mat-card-title>
+                <mat-card-subtitle>{{select.formatted_address}}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                Rating: {{select.rating}}  
+                &nbsp;
+                &nbsp;
+                Price Level: {{select.price_level}}
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </mat-list>
+      <div class="savecontainer">
+          <mat-form-field floatLabel="auto" appearance="outline">
+            <mat-label>Itinerary Name</mat-label>
+            <input [(ngModel)]="itineraryName" matInput placeholder="Itinerary Name">
+          </mat-form-field>
+          <div class="savebtns">
+            <button mat-raised-button (click)="saveItinerary()">Save</button>
+            <button mat-raised-button (click)="loadItinerary()">Load</button>
+            <button mat-raised-button (click)="deleteItinerary()">Delete</button>
+          </div>
+      </div>  
     </div>
+    </mat-grid-tile>
+    <div class="places-container">
+      <mat-grid-tile rowspan="10">
+        <div class="list"
+            cdkDropList
+            #placeSearch="cdkDropList"
+            [cdkDropListData]="places.results"
+            [cdkDropListConnectedTo]="[itinerary]"
+            (cdkDropListDropped)="onDrop($event)">
 
-    <div class="done-container column-container">
-      <mat-list class="list"
-          cdkDropList
-          #itinerary="cdkDropList"
-          [cdkDropListData]="selected"
-          [cdkDropListConnectedTo]="placeSearch"
-          (cdkDropListDropped)="onDrop($event)">
-        <h2>My Itinerary</h2>
-        <mat-card *ngFor="let select of selected" cdkDrag>
-          <mat-card-header> 
-            <mat-card-title>{{select.name}}</mat-card-title>
-            <mat-card-subtitle>{{select.formatted_address}}</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            Rating: {{select.rating}}  
-            Price Leve: {{select.price_level}}
-          </mat-card-content>
-        </mat-card>
-      </mat-list>
-      <mat-form-field floatLabel="auto" appearance="outline">
-        <mat-label>Itinerary Name</mat-label>
-        <input [(ngModel)]="itineraryName" matInput placeholder="Itinerary Name">
-      </mat-form-field>
-      <button mat-raised-button (click)="saveItinerary()">Save</button>
-      <button mat-raised-button (click)="loadItinerary()">Load</button>
-      <button mat-raised-button (click)="deleteItinerary()">Delete</button>
-    </div>
-  </div>
+          <mat-card *ngFor="let place of places.results" cdkDrag>
+            <mat-card-header>
+              <mat-card-title>{{place.name}}</mat-card-title>
+              <mat-card-subtitle>{{place.formatted_address}}</mat-card-subtitle>
+            </mat-card-header>
+          </mat-card>
+        </div>
+      </mat-grid-tile> 
+    </div>   
+  </mat-grid-list>
 </div>

@@ -19,8 +19,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { AgmCoreModule } from '@agm/core';
 import { MatIconModule } from '@angular/material/icon';
-import { ItinerariesComponent } from './itineraries/itineraries.component';
-import { UserItinerariesComponent } from './useritineraries/useritineraries.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { FooterComponent } from './footer/footer.component';
 import { HmgridComponent } from './hmgrid/hmgrid.component';
@@ -41,8 +39,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FindplaceComponent,
     FooterComponent,
     HmgridComponent,
-    ItinerariesComponent,
-    UserItinerariesComponent,
     FooterComponent,
     SignupComponent,
     SignupDialogComponent

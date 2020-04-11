@@ -1,9 +1,52 @@
 .login-container{
-    background-color:#39998e;
-    border-color: aliceblue;
-    min-width: 300px;
+    background-color:#2B4D59;
+    width: 250px;
+    color: #edeff2;
+    text-align: center;
+    padding-top: 40px;
+    border-radius: 10px;
 }
 
 .btn-primary{
-    background-color: orangered;
+    background-color: #da674a;
+    color: #edeff2;
+    font-size: 22px;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+
+.btn-primary:hover{
+    background-color: #e07d6a;
+    transition: all 0.3s ease-in-out;
+}
+
+.signupcontainer{
+    padding-top: 20px;
+}
+
+.loginbtncontainer{
+    padding-top: 40px;
+}
+
+input{
+    font-size: 20px;
+    background-color: transparent;
+}
+
+mat-form-field{
+    font-size: 20px;
+    margin: 0px;
+    background-color: transparent;
+}
+
+mat-label{
+    color: #edeff2;
+    font-size: 16px;
+}
+
+.submitbtn{
+    margin-left: 20px;
 }

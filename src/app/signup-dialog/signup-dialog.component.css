@@ -1,0 +1,11 @@
+.signupbtncontainer {
+    background-color: transparent;
+    color: #edeff2;
+}
+
+.signupbtn {
+    background-color: transparent;
+    color: #edeff2;
+    font-size: 16px;
+    text-decoration: underline;
+}
