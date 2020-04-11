@@ -1,3 +1,5 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css'; 
+
 body{
     background-color: #607981;
     color: #edeff2;

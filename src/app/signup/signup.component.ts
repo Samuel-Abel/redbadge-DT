@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { APIURL } from 'src/environments/environment.prod';
+import { Signup } from '../models/signup'
 
 @Component({
   selector: 'app-signup',
@@ -16,28 +17,32 @@ lastname: string;
 email: string;
 role: string;
 
-  constructor(private http:HttpClient) { }
 
-  ngOnInit(): void {
-  }
+constructor(private http:HttpClient) { }
 
-  SignupUser(){
+ngOnInit(): void {
+}
+
+SignupUser(){
+  const httpHeaders = new HttpHeaders({
+    "Content-Type": "application/json",
+  })
     let formData={
       user: {
         username:this.username,
         password:this.password,
-        firstname:this.firstname,
-        lastname:this.lastname,
+        first_name:this.firstname,
+        last_name:this.lastname,
         email:this.email,
         role:this.role
       }
     };
-    this.http.post(`${APIURL}/api/user/create`, formData).subscribe(
-    res => {  
+    this.http.post(`${APIURL}/api/user/create`, formData, {headers: httpHeaders}).subscribe(
+    (res: Signup) => {  
     console.log(res);
+    localStorage.setItem('token',res.sessionToken)
     },
     err=> console.log(err)
     );
   }
-
 }
