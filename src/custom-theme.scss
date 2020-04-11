@@ -3,10 +3,10 @@
 
 @include mat-core();
 
-$daytrippin-primary: mat-palette($mat-bluegreen);
-$daytrippin-accent: mat-palette($mat-rust, A200, A100, A400);
+//$daytrippin-primary: mat-palette($mat-bluegreen);
+//$daytrippin-accent: mat-palette($mat-rust, A200, A100, A400);
 
-$daytrippin-theme: mat-light-theme($daytrippin-primary, $daytrippin-accent);
+//$daytrippin-theme: mat-light-theme($daytrippin-primary, $daytrippin-accent);
 
-@include angular-material-theme($daytrippin-theme);
+//@include angular-material-theme($daytrippin-theme);
 
