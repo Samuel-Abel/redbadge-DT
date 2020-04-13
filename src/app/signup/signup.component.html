@@ -1,29 +1,36 @@
-<div>
-    <ul>
-<li><mat-form-field appearance='fill'>
-    <mat-label>Username</mat-label>
-    <input matInput [(ngModel)]='username'/>
-</mat-form-field></li>
-<li><mat-form-field appearance='fill'>
-    <mat-label>Password</mat-label>
-    <input matInput [(ngModel)]='password'/>
-</mat-form-field></li>
-<li><mat-form-field appearance='fill'>
-    <mat-label>firstname</mat-label>
-    <input matInput [(ngModel)]='firstname'/>
-</mat-form-field></li>
-<li><mat-form-field appearance='fill'>
-    <mat-label>lastname</mat-label>
-    <input matInput [(ngModel)]='lastname'/>
-</mat-form-field></li>
-<li><mat-form-field appearance='fill'>
-    <mat-label>email</mat-label>
-    <input matInput [(ngModel)]='email'/>
-</mat-form-field></li>
-<li><mat-form-field appearance='fill'>
-    <mat-label>role</mat-label>
-    <input matInput [(ngModel)]='role'/>
-</mat-form-field></li>
-<button type='submit' class='btn-primary' (click)='SignupUser()'>Sign up</button>
-</ul>
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+<mat-card class="box">
+    <mat-card-header>
+    <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form">
+
+    <mat-card-content>
+        <mat-form-field class="example-full-width" >
+            <input matInput placeholder="Username" [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input type = 'password' matInput placeholder="Password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="First Name" [(ngModel)]="firstname" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Last Name" [(ngModel)]="lastname" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput type='email' placeholder="Email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+    </mat-card-content>
+
+    <button mat-stroked-button color="accent" class="btn-block" (click)="SignupUser()">Register</button>
+
+    </form>
+</mat-card>
 </div>

@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomepgComponent } from './homepg/homepg.component';
 import { FindplaceComponent } from './findplace/findplace.component';
 import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
 import { FooterComponent  } from './footer/footer.component';
 import { HmgridComponent } from './hmgrid/hmgrid.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {path:'',redirectTo: 'homepg', pathMatch:'full'},
