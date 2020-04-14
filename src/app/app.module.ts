@@ -29,6 +29,9 @@ import { MatTableModule } from '@angular/material/table';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { AuthService} from './auth.service'
+import { AuthGuard } from './auth.guard';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -70,7 +73,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatPaginatorModule
   ],
 
-  providers: [],
+  providers: [AuthService, AuthGuard, JwtHelperService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
