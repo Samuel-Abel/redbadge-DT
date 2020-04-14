@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { APIURL } from 'src/environments/environment.prod';
 import { Router } from '@angular/router';
 import { Signup } from '../models/signup';
+import { ApiService } from 'src/api.service';
 
 @Component({
   selector: 'app-signup',
@@ -17,10 +18,12 @@ export class SignupComponent implements OnInit {
   firstname: string;
   lastname: string;
   email: string;
+  toggleLogin:boolean;
   
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private router:Router, private apiService:ApiService) { }
 
 ngOnInit() {
+  this.apiService.showLogin.subscribe(message => this.toggleLogin = message)
   }
 
 
@@ -40,37 +43,13 @@ SignupUser(){
     this.http.post(`${APIURL}/api/user/create`, formData,{headers: httpHeaders}).subscribe(
     (res: Signup) => {  
     console.log(res);
-    sessionStorage.setItem('token',res.sessionToken)
+    localStorage.setItem('token',res.sessionToken)
+    this.router.navigateByUrl('/findplace')
     },
     err=> console.log(err)
     );
   }
+  showLogin(){
+    this.apiService.changeLoginStatus(!this.toggleLogin)
+  }
 }
-
-
-
-
-
-
-// import { Component, OnInit } from '@angular/core';
-// import { HttpClient} from '@angular/common/http';
-// import { APIURL } from 'src/environments/environment.prod';
-// import { Signup } from '../models/signup';
-// import { Router } from '@angular/router';
-
-// @Component({
-//   selector: 'app-signup',
-//   templateUrl: './signup.component.html',
-//   styleUrls: ['./signup.component.css']
-// })
-// export class SignupComponent implements OnInit {
-
-// username: string;
-// password: string;
-// firstname: string;
-// lastname: string;
-// email: string;
-// role: string;
-
-
-

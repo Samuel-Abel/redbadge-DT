@@ -13,12 +13,16 @@ export class LoginComponent implements OnInit {
 
   username: string;
   password: string;
+  toggleRegister:boolean;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private router:Router,private apiService:ApiService ) { }
 
   ngOnInit() {
+    this.apiService.showLogin.subscribe(message => this.toggleRegister = message)
     } 
   
+
+
 LoginUser(){
 let formData = {
   user: {
@@ -29,8 +33,12 @@ let formData = {
 this.http.post<any>(`${APIURL}/api/user/signin`, formData).subscribe(
   res => {
     console.log(res);
-    sessionStorage.setItem('token', res.sessionToken)
+    localStorage.setItem('token', res.sessionToken)
+    this.router.navigateByUrl('/findplace')
   }
 )
 }
+  showRegister(){
+    this.apiService.changeLoginStatus(!this.toggleRegister)
+  }
 }

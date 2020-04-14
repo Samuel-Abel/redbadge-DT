@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment, APIURL } from './environments/environment.prod';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,13 @@ import { environment, APIURL } from './environments/environment.prod';
 export class ApiService {
   constructor(private http:HttpClient) { }
   
+private loginSource = new BehaviorSubject(true)
+showLogin = this.loginSource.asObservable();
+
+changeLoginStatus(showStatus){
+  this.loginSource.next(showStatus)
+}
+
   getPlaces(apiQuery: any){
     const apiUrl: string = `http://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${apiQuery}&key=${environment.API_KEY}` 
     return this.http.get(apiUrl)
@@ -99,4 +107,5 @@ export class ApiService {
     headers: httpHeaders
     })    
   }
+
 }

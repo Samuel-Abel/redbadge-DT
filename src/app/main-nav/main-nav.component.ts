@@ -23,7 +23,7 @@ export class MainNavComponent {
   }
   
   LogoutUser(){
-    sessionStorage.clear()
+    localStorage.clear()
     this.router.navigateByUrl("/homepg")
   }
 }
