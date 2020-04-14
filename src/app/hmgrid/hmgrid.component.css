@@ -12,6 +12,20 @@
     box-shadow: none !important;
 }
 
+.firstimgtile {
+    margin-left: 100px !important;
+}
+
+.secondimgtile {
+    margin-left: 220px !important;
+    margin-top: 30px !important;
+}
+
+.secondimg {
+    background-color: transparent;
+    box-shadow: none !important;
+}
+
 .thirdimg {
     background-color: transparent;
     box-shadow: none !important;
@@ -23,16 +37,24 @@
 
 .image {
     max-width: 300px;
+    margin-top: -70px !important;
+    margin-left: 50px !important;
+}
+
+.image {
+    max-width: 400px;
 }
 
 .logoimg {
     height: 200px;
     width: 500px;
+    margin-bottom: 60px !important;
 }
 
 .login {
     margin-top: -30px !important;
     margin-left: -30px !important;
+    margin-left: -120px !important;
     width: 300px;
 }
 

@@ -1,0 +1,21 @@
+button{
+    background-color: #da674a;
+    color: #edeff2;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 13px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 5px;
+}
+
+button:hover{
+    background-color: #e07d6a;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.signupform{
+    display: flex;
+    justify-content: center;
+}
