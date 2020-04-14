@@ -3,10 +3,76 @@
 
 @include mat-core();
 
-$daytrippin-primary: mat-palette($mat-bluegreen);
-$daytrippin-accent: mat-palette($mat-rust, A200, A100, A400);
+$daytrippin-primary: (
+    50 : #e6eaeb,
+    100 : #bfcacd,
+    200 : #95a6ac,
+    300 : #6b828a,
+    400 : #4b6871,
+    500 : #2b4d58,
+    600 : #264650,
+    700 : #203d47,
+    800 : #1a343d,
+    900 : #10252d,
+    A100 : #6cd2ff,
+    A200 : #39c3ff,
+    A400 : #06b3ff,
+    A700 : #00a4eb,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
 
-$daytrippin-theme: mat-light-theme($daytrippin-primary, $daytrippin-accent);
+$daytrippin-accent: (
+    50 : #fbedea,
+    100 : #f4d1cb,
+    200 : #edb3a8,
+    300 : #e59485,
+    400 : #e07d6a,
+    500 : #da6650,
+    600 : #d65e49,
+    700 : #d05340,
+    800 : #cb4937,
+    900 : #c23827,
+    A100 : #ffffff,
+    A200 : #ffd1cd,
+    A400 : #ffa39a,
+    A700 : #ff8c80,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$daytrippin-theme-primary: mat-palette($daytrippin-primary);
+$daytrippin-theme-accent: mat-palette($daytrippin-accent);
+
+
+$daytrippin-theme: mat-light-theme($daytrippin-theme-primary, $daytrippin-theme-accent);
 
 @include angular-material-theme($daytrippin-theme);
-
