@@ -13,7 +13,8 @@
     </mat-grid-tile>
     
     <mat-grid-tile class='login' rowspan='2'>
-        <app-login></app-login>
+        <div *ngIf = 'toggle'><app-login></app-login></div>
+       <div *ngIf = '!toggle'><app-signup></app-signup></div>
     </mat-grid-tile>
 
     <mat-grid-tile class='secondimgtile'>

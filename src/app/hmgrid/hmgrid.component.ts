@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/api.service';
 
 @Component({
   selector: 'app-hmgrid',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hmgrid.component.css']
 })
 export class HmgridComponent implements OnInit {
-
-  constructor() { }
+  toggle: boolean;
+  constructor(private apiService:ApiService) { }
 
   ngOnInit(): void {
+    this.apiService.showLogin.subscribe(message => this.toggle = message)
+
   }
 
 }

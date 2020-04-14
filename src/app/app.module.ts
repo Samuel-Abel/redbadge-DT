@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepgComponent } from './homepg/homepg.component';
@@ -22,9 +22,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { FooterComponent } from './footer/footer.component';
 import { HmgridComponent } from './hmgrid/hmgrid.component';
 import { MatCardModule} from '@angular/material/card';
-import { SignupComponent } from './signup/signup.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { SignupDialogComponent } from './signup-dialog/signup-dialog.component';
+import { SignupComponent } from './signup/signup.component';
 import { MatTableModule } from '@angular/material/table';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -43,8 +42,7 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
     FooterComponent,
     HmgridComponent,
     FooterComponent,
-    SignupComponent,
-    SignupDialogComponent
+    SignupComponent
     ],
 
   imports: [

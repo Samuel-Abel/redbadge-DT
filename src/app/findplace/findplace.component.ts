@@ -2,8 +2,6 @@ import { Component} from '@angular/core';
 import { ApiService } from '../../api.service';
 import { googleResults } from '../models/googleResults';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import { FormGroup } from '@angular/forms';
-import {PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-findplace',
@@ -49,8 +47,8 @@ this.placeService.getPlaces(apiQuery)
   this.isDisabled = false;
   this.places = places;
   console.log(this.places);
- this.placeType = ""
- this.location = ""
+this.placeType = ""
+this.location = ""
 })
 }
 
@@ -130,17 +128,4 @@ clearItinerary(){
   this.showDeleteButton = false
   this.isDisabled = true
 }
-
-// MatPaginator Inputs
-length = 60;
-pageSize = 10;
-pageSizeOptions: number[] = [5, 10, 25, 100];
-
-// MatPaginator Output
-pageEvent: PageEvent;
-
-setPageSizeOptions(setPageSizeOptionsInput: string) {
-  if (setPageSizeOptionsInput) {
-    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
-  }}
 }
