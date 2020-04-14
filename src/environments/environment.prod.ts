@@ -8,7 +8,7 @@ switch (window.location.hostname) {
     // this is the deployed angular application
     case 'daytrippin-client.herokuapp.com':
         // this is the full url of your deployed API
-        APIURL = 'https://daytrippin-server.herokuapp.com'
+        APIURL = 'http://cors-anywhere.herokuapp.com/https://daytrippin-server.herokuapp.com'
         break;
     default:
         // this is the local host name of your API
