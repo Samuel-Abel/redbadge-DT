@@ -1,3 +1,5 @@
+<main-nav></main-nav>
+
 <div class="findplccontainer">
 
   <div class="searchcontainer" fxLayout="row">
@@ -10,7 +12,8 @@
         <mat-label>City to Search</mat-label>
           <input matInput placeholder="Location" [(ngModel)]="location">    
       </mat-form-field>
-      <button mat-raised-button [disabled]="!location" (click)="search()" class="submitbtn">Submit</button>
+      <button mat-raised-button [disabled]="!location" (click)="search()" class="submitbtn"><mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
+        Search</button>
     </div>
   </div>
   
@@ -57,28 +60,33 @@
       </mat-list>
     </div>
 
-    <div class="savecontainer" fxFlex="25%" fxLayoutAlign="center">
+    <div class="savecontainer" fxFlex="20%" fxLayoutAlign="center">
       <mat-form-field floatLabel="auto" appearance="outline">
         <mat-label>Itinerary Name</mat-label>
         <input 
           [(ngModel)]="itineraryName" 
           matInput placeholder="Itinerary Name">
       </mat-form-field>
-        <button type="submit" mat-raised-button (click)="saveItinerary()" [disabled]="isDisabled" >Save</button>
+        <button type="submit" mat-raised-button (click)="saveItinerary()" [disabled]="isDisabled"><mat-icon aria-hidden="false" aria-label="Example home icon">save_alt</mat-icon> Save</button>
     </div>  
 
-    <div class="loadcontainer" fxFlex="25%" fxLayoutAlign="center">
+    <div class="loadcontainer" fxFlex="20%" fxLayoutAlign="center">
       <mat-form-field floatLabel="auto" appearance="outline" class="input">
         <mat-label>Select an Itinerary</mat-label>
         <mat-select class="input" [(ngModel)]="itinerarySelected">
-          <mat-option *ngFor="let x of itineraries" value="{{x.id}}">{{x.itineraryName}}</mat-option>
+          <mat-option>Itinerary1</mat-option>
         </mat-select>
       </mat-form-field>
-      <div class="loadbuttons">
-        <button mat-raised-button (click)="loadItinerary()">Load</button>
-        <button mat-raised-button (click)="clearItinerary()">Clear</button>
-        <button mat-raised-button *ngIf="showDeleteButton" (click)="deleteItinerary()">Delete</button>
-        <button mat-raised-button *ngIf="showUpdateButton" (click)="updateItinerary()">Update</button>
+    </div> 
+
+    <div class="loadbuttons" fxFlex="15%" fxLayoutAlign="center">
+      <div flexLayout="column">
+        <button mat-raised-button class="loadbtn" (click)="loadItinerary()"><mat-icon aria-hidden="false" aria-label="Example home icon">arrow_upward</mat-icon> Load</button>
+        <button mat-raised-button class="loadbtn" (click)="clearItinerary()"><mat-icon aria-hidden="false" aria-label="Example home icon">clear</mat-icon> Clear</button>
+        <button mat-raised-button *ngIf="showDeleteButton" class="loadbtn" (click)="deleteItinerary()"><mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon> Delete</button>
+        <button mat-raised-button *ngIf="showUpdateButton" class="loadbtn" (click)="updateItinerary()"><mat-icon aria-hidden="false" aria-label="Example home icon">check</mat-icon> Update</button>
       </div>
     </div>
-</div>
+  
+  </div>
+
