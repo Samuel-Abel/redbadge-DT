@@ -74,7 +74,7 @@
       <mat-form-field floatLabel="auto" appearance="outline" class="input">
         <mat-label>Select an Itinerary</mat-label>
         <mat-select class="input" [(ngModel)]="itinerarySelected">
-          <mat-option>Itinerary1</mat-option>
+          <mat-option *ngFor='let x of itineraries' value='{{x.id}}'>{{x.itineraryName}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div> 
