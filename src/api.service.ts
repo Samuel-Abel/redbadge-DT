@@ -18,7 +18,7 @@ changeLoginStatus(showStatus){
 }
 
   getPlaces(apiQuery: any){
-    const apiUrl: string = `http://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${apiQuery}&key=${environment.API_KEY}` 
+    const apiUrl: string = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=${apiQuery}&key=${environment.API_KEY}` 
     return this.http.get(apiUrl)
   }
   
