@@ -11,7 +11,9 @@ import { SignupComponent } from './signup/signup.component';
 const routes: Routes = [
   {path:'',redirectTo: 'homepg', pathMatch:'full'},
   {path:'homepg', component: HomepgComponent},
-  {path:'findplace', component: FindplaceComponent, canActivate: [AuthGuard]},
+  {path:'findplace', component: FindplaceComponent, 
+  canActivate: [AuthGuard]
+},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'footer', component: FooterComponent},
