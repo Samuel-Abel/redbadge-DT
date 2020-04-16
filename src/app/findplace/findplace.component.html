@@ -31,6 +31,12 @@
             <mat-card-title>{{place.name}}</mat-card-title>
             <mat-card-subtitle>{{place.formatted_address}}</mat-card-subtitle>
           </mat-card-header>
+          <mat-card-content>
+            Rating: {{place.rating}}  
+            &nbsp;
+            &nbsp;
+            Price Level: {{place.price_level}}
+          </mat-card-content>
         </mat-card>
       </mat-list>  
     </div>
